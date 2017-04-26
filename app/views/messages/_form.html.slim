@@ -1,0 +1,21 @@
+= form_for message do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :receiver
+    = f.select :receiver_id, receivers_for_select, {},
+      class: 'form-control select2'
+
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+
+  .form-check
+    label.form-check-label
+      = f.check_box :draft, class: 'form-check-input'
+      | Draft?
+
+  .form-group
+    = f.submit 'Send', class: 'btn btn-primary'

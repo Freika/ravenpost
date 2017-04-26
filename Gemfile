@@ -21,6 +21,10 @@ gem 'select2-rails', '4.0.3'
 gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'slim-rails', '~> 3.1.2'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
 gem 'figaro'
 gem 'devise', '4.2.1'
 gem 'will_paginate', '~> 3.1.0'

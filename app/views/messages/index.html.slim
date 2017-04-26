@@ -8,10 +8,26 @@ h1 All messages
       a.list-group-item href='#' Drafts
 
   .col-9
+    p
+      button.btn.btn-primary {
+        aria-controls="new_message"
+        aria-expanded="false"
+        data-target="#new_message"
+        data-toggle="collapse"
+        type="button"
+      }
+        | New message
+
+      #new_message.collapse
+        .card.card-block
+          = render 'form', message: @message
+
     .list-group
       - @messages.each do |message|
         = link_to message, class: 'list-group-item list-group-item-action flex-column align-items-start' do
           .d-flex.w-100.justify-content-between
             h5.mb-1 = message.title
-            small = message.created_at
+            small
+              => "#{message.sender.first_name},"
+              = "#{time_ago_in_words(message.created_at)} ago"
           p.mb-1 = message.content
