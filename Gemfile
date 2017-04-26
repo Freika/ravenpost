@@ -31,6 +31,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'spring'
   gem 'launchy'
+  gem 'ffaker'
 end
 
 group :test do
