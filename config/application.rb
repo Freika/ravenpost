@@ -18,8 +18,15 @@ Bundler.require(*Rails.groups)
 
 module Ravenpost
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.time_zone = 'UTC'
+    config.active_record.default_timezone = :utc
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        view_specs:    false,
+        request_specs: false,
+        routing_specs: false,
+        helper_specs:  false
+    end
   end
 end

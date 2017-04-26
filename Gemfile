@@ -25,8 +25,6 @@ gem 'figaro'
 gem 'devise', '4.2.1'
 gem 'will_paginate', '~> 3.1.0'
 
-
-
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
