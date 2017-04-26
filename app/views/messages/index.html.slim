@@ -1,2 +1,17 @@
-h1 Messages#index
-p Find me in app/views/messages/index.html.slim
+h1 All messages
+
+.row
+  .col-3
+    list-group
+      a.list-group-item href='#' Sent messages
+      a.list-group-item href='#' Received messages
+      a.list-group-item href='#' Drafts
+
+  .col-9
+    .list-group
+      - @messages.each do |message|
+        = link_to message, class: 'list-group-item list-group-item-action flex-column align-items-start' do
+          .d-flex.w-100.justify-content-between
+            h5.mb-1 = message.title
+            small = message.created_at
+          p.mb-1 = message.content
