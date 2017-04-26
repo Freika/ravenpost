@@ -1,0 +1,26 @@
+nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+  button {
+    class = 'navbar-toggler navbar-toggler-right'
+    aria-controls="navbar"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    data-target="#navbar"
+    data-toggle="collapse"
+    type="button"
+  }
+    span.navbar-toggler-icon
+  = link_to 'RavenPost', root_path, class: 'navbar-brand'
+
+  #navbar.collapse.navbar-collapse.float-left
+    - if signed_in?
+      a#navbar_dropdown_signed_in.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com"
+        | Hi, #{current_user.first_name}
+      .dropdown-menu aria-labelledby="navbar_dropdown_signed_in"
+        = link_to 'Settings', edit_user_registration_path, class: 'dropdown-item'
+        = link_to 'Sign out', destroy_user_session_path, data: { method: :delete }, class: 'dropdown-item'
+    - else
+      a#navbar_dropdown_signed_out.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com"
+        | SIGNED OUT
+      .dropdown-menu aria-labelledby="navbar_dropdown_signed_out"
+        = link_to 'Sign in', new_user_session_path, class: 'dropdown-item'
+        = link_to 'Sign up', new_user_registration_path, class: 'dropdown-item'
