@@ -1,11 +1,11 @@
-h1 All messages
+h1 = page_title
 
 .row
   .col-3
     list-group
-      a.list-group-item href='#' Sent messages
-      a.list-group-item href='#' Received messages
-      a.list-group-item href='#' Drafts
+      = link_to 'Inbox', messages_inbox_path, class: 'list-group-item'
+      = link_to 'Sent', messages_sent_path, class: 'list-group-item'
+      = link_to 'Drafts', messages_drafts_path, class: 'list-group-item'
 
   .col-9
     p
@@ -20,14 +20,18 @@ h1 All messages
 
       #new_message.collapse
         .card.card-block
-          = render 'form', message: @message
+          = render 'messages/form', message: @message
 
-    .list-group
-      - @messages.each do |message|
-        = link_to message, class: 'list-group-item list-group-item-action flex-column align-items-start' do
-          .d-flex.w-100.justify-content-between
-            h5.mb-1 = message.title
-            small
-              => "#{message.sender.first_name},"
-              = "#{time_ago_in_words(message.created_at)} ago"
-          p.mb-1 = message.content
+    - if @messages.any?
+      .list-group
+        - @messages.each do |message|
+          = link_to message, class: 'list-group-item list-group-item-action flex-column align-items-start' do
+            .d-flex.w-100.justify-content-between
+              h5.mb-1 = message.title
+              small
+                => "#{message.sender.first_name},"
+                = "#{time_ago_in_words(message.created_at)} ago"
+            p.mb-1 = raw message.content
+    - else
+      .jumbotron.text-center
+        h3 There are no messages yet!

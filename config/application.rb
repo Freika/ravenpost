@@ -28,5 +28,8 @@ module Ravenpost
         routing_specs: false,
         helper_specs:  false
     end
+
+    config.action_view.sanitized_allowed_tags = %w(b i strong a)
+    config.action_view.sanitized_allowed_attributes = %w(href)
   end
 end
