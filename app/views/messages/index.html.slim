@@ -32,6 +32,9 @@ h1 = page_title
                 => "#{message.sender.first_name},"
                 = "#{time_ago_in_words(message.created_at)} ago"
             p.mb-1 = raw message.content
+
+      .text-center
+        = will_paginate @messages
     - else
       .jumbotron.text-center
         h3 There are no messages yet!
