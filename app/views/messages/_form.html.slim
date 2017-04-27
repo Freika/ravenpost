@@ -5,8 +5,9 @@
 
   .form-group
     = f.label :receiver
-    = f.select :receiver_id, receivers_for_select, {},
-      class: 'form-control select2'
+    br
+    = f.select :receiver_ids, receivers_for_select, {},
+      class: 'form-control select2-tags',  multiple: true
 
   .form-group
     = f.label :content

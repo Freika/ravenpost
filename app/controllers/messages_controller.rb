@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @messages = current_user.received_messages\
+    @messages = current_user.received_messages
                   .includes(:sender)
                   .order(created_at: :desc)
     @message = current_user.sent_messages.build
@@ -26,6 +26,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content, :draft, :receiver_id)
+    params.require(:message).permit(:title, :content, :draft, receiver_ids: [])
   end
 end
