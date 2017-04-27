@@ -21,5 +21,5 @@ describe Message, type: :model do
       .with_foreign_key(:sender_id)
       .class_name('User')
   end
-  it { should have_many(:recipients) }
+  it { should have_many(:user_messages) }
 end

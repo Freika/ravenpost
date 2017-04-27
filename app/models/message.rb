@@ -16,8 +16,10 @@
 #
 
 class Message < ApplicationRecord
+  attr_accessor :recipient_ids
+
   belongs_to :sender, class_name: 'User', foreign_key: :sender_id
-  has_many :recipients
+  has_many :user_messages
 
   scope :drafts, -> { where(draft: true) }
 end

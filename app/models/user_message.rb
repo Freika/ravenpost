@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: recipients
+# Table name: user_messages
 #
 #  id         :integer          not null, primary key
 #  message_id :integer
@@ -10,11 +10,11 @@
 #
 # Indexes
 #
-#  index_recipients_on_message_id  (message_id)
-#  index_recipients_on_user_id     (user_id)
+#  index_user_messages_on_message_id  (message_id)
+#  index_user_messages_on_user_id     (user_id)
 #
 
-describe Recipient, type: :model do
-  it { should belong_to(:user) }
-  it { should belong_to(:message) }
+class UserMessage < ApplicationRecord
+  belongs_to :message
+  belongs_to :user
 end
