@@ -5,16 +5,13 @@ require 'rspec/rails'
 require 'devise'
 require 'factory_girl_rails'
 require 'shoulda/matchers'
+require 'capybara/poltergeist'
+require 'capybara-screenshot/rspec'
 include Warden::Test::Helpers
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
-
-Capybara.javascript_driver = :webkit
-Capybara::Webkit.configure do |config|
-  config.block_unknown_urls
-end
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -25,6 +22,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Rails.application.routes.url_helpers
   config.include Warden::Test::Helpers
+  config.include FeatureHelpers, type: :feature
 
   config.before(:all) { FactoryGirl.reload }
 
@@ -36,4 +34,13 @@ RSpec.configure do |config|
   end
   config.before(:each) { DatabaseCleaner.start }
   config.after(:each) { DatabaseCleaner.clean }
+
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, phantomjs_logger: Rails.root.join('log', 'poltergeist.log'), :inspector => true)
+  end
+
+  Capybara.javascript_driver = :poltergeist
+
+  Capybara.server_port = 3001
+  Capybara.app_host = 'http://localhost:3001'
 end

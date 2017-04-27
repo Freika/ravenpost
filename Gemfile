@@ -41,7 +41,8 @@ end
 
 group :test do
   gem 'capybara', '~> 2.8'
-  gem 'capybara-webkit'
+  gem 'capybara-screenshot', '~> 1.0.14'
+  gem 'poltergeist', '~> 1.12.0'
   gem 'database_cleaner', '~> 1.3'
   gem 'shoulda-matchers', '~> 2.8'
   gem 'codeclimate-test-reporter', require: nil
