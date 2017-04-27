@@ -25,7 +25,7 @@ h1 = page_title
     - if @messages.any?
       .list-group
         - @messages.each do |message|
-          = link_to message, class: 'list-group-item list-group-item-action flex-column align-items-start' do
+          = link_to message, class: "list-group-item list-group-item-action flex-column align-items-start #{read_class(message)}" do
             .d-flex.w-100.justify-content-between
               h5.mb-1 = message.title
               small
