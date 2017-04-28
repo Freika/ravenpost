@@ -6,7 +6,7 @@
   .form-group
     = f.label :recipients
     br
-    = f.select :recipient_ids, recipients_for_select, {},
+    = f.select :recipient_ids, users_except_current, {},
       class: 'form-control select2-tags',  multiple: true
 
   .form-group
