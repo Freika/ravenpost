@@ -3,7 +3,7 @@ p
     = form_tag '', class: 'form-inline', id: 'message_filter', method: :get do
       .col-4
         = select_tag :sender, users_except_current,
-          class: 'select2 form-control',
+          class: 'form-control',
           include_blank: 'Filter by sender'
       .col-5
         = text_field_tag :query, params[:query],
