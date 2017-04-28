@@ -1,14 +1,14 @@
 p
   .card.card-block
     = form_tag '', class: 'form-inline', id: 'message_filter', method: :get do
-      .col-5
+      .col-4
         = select_tag :sender, users_except_current,
           class: 'select2 form-control',
-          include_blank: 'Filter by user'
+          include_blank: 'Filter by sender'
       .col-5
         = text_field_tag :query, params[:query],
           class: 'form-control',
           placeholder: 'Search by title or content'
-
-      .col-2
+      .col-3
         = submit_tag 'Filter', class: 'btn btn-primary'
+        = link_to 'Reset', current_page, class: 'btn'
