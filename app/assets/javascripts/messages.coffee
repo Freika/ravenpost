@@ -3,3 +3,5 @@ $(document).on 'turbolinks:load ajax:success', ->
     tags: true
   })
 
+  $('.select2').select2()
+
