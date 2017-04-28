@@ -23,7 +23,7 @@ h1 = page_title
           = render 'messages/form', message: @message
 
     - if @messages.any?
-      .list-group
+      #messages.list-group
         - @messages.each do |message|
           = link_to message, class: "list-group-item list-group-item-action flex-column align-items-start #{read_class(message)}" do
             .d-flex.w-100.justify-content-between
@@ -33,8 +33,8 @@ h1 = page_title
                 = "#{time_ago_in_words(message.created_at)} ago"
             p.mb-1 = raw message.content
 
-      .text-center
-        = will_paginate @messages
+        #infinite_scroll.text-center
+          = will_paginate @messages
     - else
       .jumbotron.text-center
         h3 There are no messages yet!
