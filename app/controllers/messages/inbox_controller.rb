@@ -9,8 +9,13 @@ class Messages::InboxController < ApplicationController
                   .includes(:user_messages)
                   .paginate(page: params[:page])
                   .order(created_at: :desc)
-    if params[:sender]
+
+    if params[:sender].present?
       messages = messages.where(sender_id: params[:sender])
+    end
+
+    if params[:query].present?
+      messages = messages.search_full_text(params[:query])
     end
 
     @messages = messages
