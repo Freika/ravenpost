@@ -31,5 +31,6 @@ module Ravenpost
 
     config.action_view.sanitized_allowed_tags = %w(b i strong a)
     config.action_view.sanitized_allowed_attributes = %w(href)
+    config.active_record.schema_format = :sql
   end
 end
