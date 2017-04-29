@@ -1,0 +1,4 @@
+$(document).on 'turbolinks:load ajax:success', ->
+  $('#message_filter').submit ->
+    $('#messages').html('<%= image_tag "ajax-loader.gif", alt: "Loading...", title: "Loading..." %>')
+
