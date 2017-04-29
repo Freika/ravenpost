@@ -22,8 +22,8 @@ p
         => link_to url_for(params.permit(:sort_by, :order).merge(sort_by: 'date', order: 'desc'))
           i.fa.fa-sort-desc
         'or
-        ' Author
-        => link_to url_for(params.permit(:sort_by, :order).merge(sort_by: 'author', order: 'asc'))
+        ' Status
+        => link_to url_for(params.permit(:sort_by, :order).merge(sort_by: 'status', order: 'asc'))
           i.fa.fa-sort-asc
-        => link_to url_for(params.permit(:sort_by, :order).merge(sort_by: 'author', order: 'desc'))
+        => link_to url_for(params.permit(:sort_by, :order).merge(sort_by: 'status', order: 'desc'))
           i.fa.fa-sort-desc
