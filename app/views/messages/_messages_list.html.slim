@@ -7,7 +7,7 @@
           small
             => "#{message.sender.first_name},"
             = "#{time_ago_in_words(message.created_at)} ago"
-        p.mb-1 = raw message.content
+        p.mb-1 = raw truncate(message.content, length: 200)
 
     #infinite_scroll.text-center
       = will_paginate @messages
