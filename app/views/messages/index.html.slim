@@ -4,24 +4,13 @@
 
   .col-9
     h1 = page_title
-    p
-      button.btn.btn-primary {
-        aria-controls="new_message"
-        aria-expanded="false"
-        data-target="#new_message"
-        data-toggle="collapse"
-        type="button"
-      }
-        | New message
-
-      #new_message.collapse
-        .card.card-block
-          = render 'messages/form', message: @message
+    - if current_page?(messages_inbox_path) || current_page?(root_path)
+      = render 'messages/form', message: @message
 
     = render 'messages/filter_form'
 
     #messages
-      .list-group
+      .list-group id=("recipient_#{current_user.id}")
         - if @messages.any?
           = render partial: 'messages/message', collection: @messages, as: :message
 
