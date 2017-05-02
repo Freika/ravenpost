@@ -10,12 +10,4 @@
     = render 'messages/filter_form'
 
     #messages
-      .list-group id=("recipient_#{current_user.id}")
-        - if @messages.any?
-          = render partial: 'messages/message', collection: @messages, as: :message
-
-          #infinite_scroll.text-center
-            = will_paginate @messages
-        - else
-          .jumbotron.text-center
-            h3 There are no messages!
+      = render 'messages/messages_list'
